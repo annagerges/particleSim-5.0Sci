@@ -165,7 +165,7 @@ int main() {
 
             stepCount++;
 
-            if (steps % 10 == 0) {
+            if (stepCount % 10 == 0) {
                 if (buffer.size() > 100000) {
                     file << buffer;
                     buffer.clear();
