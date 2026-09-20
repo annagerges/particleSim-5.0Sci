@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="particleSim 5.0Sci/particleSim 5.0Sci.vcxproj" />
+  <Project Path="particleSim 5.0Sci/particleSim 5.0Sci.vcxproj" Id="e92280d7-56b1-40d2-a628-09f213233b73" />
 </Solution>

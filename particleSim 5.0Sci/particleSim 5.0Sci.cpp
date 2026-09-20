@@ -139,7 +139,7 @@ int main() {
         //increment accumulator by frame duration
         accumulator += frameDur.count();
 
-        //so that the CPU doesn't have to run around and infinitely do steps to check for the 1000 particles.
+        //so that the CPU doesn't have to run around and infinitely do stepCount to check for the 1000 particles.
         if (accumulator > 0.1f) {
             accumulator = 0.1f;
         }

@@ -217,13 +217,3 @@ void csvDump(vector<Particles>& part, string& buffer, double time) {
 	}
 }
 
-//checks accelaration at different points
-//checks accelaration at different points
-double checkAccel(double h, Spring& s, double m) {
-	if (h <= s.getHeight()) {
-		return (s.getK() / m) * (s.getHeight() - h) - 9.8f;
-	}
-	else {
-		return -9.8f;
-	}
-}

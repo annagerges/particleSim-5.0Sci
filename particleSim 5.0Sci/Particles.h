@@ -137,7 +137,6 @@ void wallCollis(std::vector<Particles>&);
 void fix(std::vector<Particles>&, std::unordered_map<int, std::vector<Particles*>>&, int, int);
 void particleCollis(std::unordered_map<int, std::vector<Particles*>>&, int);
 void csvDump(std::vector<Particles>&, std::string&, double);
-double checkAccel(double, Spring&, double);
 
 #endif
 
