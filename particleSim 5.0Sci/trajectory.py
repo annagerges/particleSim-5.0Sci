@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #collect number of particles
-with open("particleInfo.csv", "r") as f:
+with open("particleInfo5.0.csv", "r") as f:
     nP_line=f.readline()
 
     nP=int(nP_line.split(":")[1].strip())
 
-df=pd.read_csv("particleInfo.csv", skiprows=3)
+df=pd.read_csv("particleInfo5.0.csv", skiprows=3)
 
 print("Loading Particle Trajectories")
 

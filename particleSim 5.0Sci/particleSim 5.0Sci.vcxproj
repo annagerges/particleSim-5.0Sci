@@ -144,7 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="analyze.py" />
-    <None Include="timeOptimization.py" />
     <None Include="trajectory.py" />
   </ItemGroup>
   <ItemGroup>

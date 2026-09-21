@@ -68,6 +68,7 @@ int main() {
     uniform_real_distribution<double>randVelo(1, 30);
 
     unordered_map <int, vector<Particles*>> hash;
+    hash.reserve(nBox * nBox);
 
     for (int index = 0; index < nP; index++) {
 
@@ -124,7 +125,7 @@ int main() {
     //start frame timer
     auto previousTime = chrono::high_resolution_clock::now();
 
-
+    
     //infinite loop
     while (true) {
         //end of frame timer
@@ -144,7 +145,9 @@ int main() {
             accumulator = 0.1f;
         }
 
-        while (accumulator >= dt) {
+    
+
+        while (accumulator>=dt) {
             totalTime += dt;
 
             //update position, wall collision checks, and clear and update the hashmap 
@@ -166,6 +169,7 @@ int main() {
             stepCount++;
 
             if (stepCount % 10 == 0) {
+                csvDump(particles, buffer, totalTime);
                 if (buffer.size() > 100000) {
                     file << buffer;
                     buffer.clear();
