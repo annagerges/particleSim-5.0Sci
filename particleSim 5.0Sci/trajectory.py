@@ -47,7 +47,7 @@ for _, row in df.iterrows():
 
     try:
         ##check if particle num is valid and convert it to an integer
-        p_id=int(double(raw_pid))
+        p_id=int(float(raw_pid))
     except (ValueError, TypeError):
         p_id=None
 

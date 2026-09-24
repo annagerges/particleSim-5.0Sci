@@ -22,7 +22,7 @@ void updatePos(vector<Particles>& particles, Spring& s) {
 		// RK4 stages
 		double k1y = p.getVy();
 
-		//if it's on the spring change it's accelaration to k*dy/m-(dampening coeffiecient*velo/mass)-g and if not than keep accelaration to -9.8
+		//if it's on the spring change it's acceleration to k*dy/m-(damping coeffiecient*velo/mass)-g and if not than keep acceleration to -9.8
 		double k1v = onSpring ? (s.getK() / p.getMass()) * (s.getHeight() - p.getY()) - (s.getDamp() * k1y) / p.getMass() - 9.8f : -9.8f;
 
 		double k2y = p.getVy() + 0.5f * k1v * dt;
@@ -99,7 +99,7 @@ void fix(vector<Particles>& part, unordered_map<int, vector<Particles*>>& grid, 
 		part[index].setRow(row);
 		part[index].setCol(col);
 
-		//cell (any paritcle w same row and col will have the same cell key)
+		//cell (any particle w same row and col will have the same cell key)
 		cellKey = (row * nBox) + col;
 
 		// Inserts key
@@ -120,7 +120,8 @@ void particleCollis(unordered_map<int, vector<Particles*>>& grid, int nBox) {
 		const auto& cellParticles = pair.second;
 		for (size_t start = 0; start < cellParticles.size(); start++) {
 			for (size_t index = start + 1; index < cellParticles.size(); index++) {
-				//compute dy and dx to figure out if they collided on x or y axis
+
+				//compute dy and dx
 				dy = cellParticles[index]->getY() - cellParticles[start]->getY();
 				dx = cellParticles[index]->getX() - cellParticles[start]->getX();
 
@@ -130,11 +131,12 @@ void particleCollis(unordered_map<int, vector<Particles*>>& grid, int nBox) {
 
 				//if distance^2 is less than the particle radius^2: then they collided. Using squared to budget CPU resources and be accurate at the same time
 				if (absDx * absDx + absDy * absDy < 100) {
+
 					// Calculate relative velocity
 					double dvx = cellParticles[index]->getVx() - cellParticles[start]->getVx();
 					double dvy = cellParticles[index]->getVy() - cellParticles[start]->getVy();
 
-					//only swap velo if they are moving towards eachother. Determines if they are pointing to eachother and acts accordingly
+					//only swap velo if they are moving towards eachother. Determines if they are pointing towards eachother and acts accordingly
 					if (dx * dvx + dy * dvy < 0) {
 						if (absDx <= absDy) {
 							double tempVy = cellParticles[start]->getVy();
@@ -151,7 +153,7 @@ void particleCollis(unordered_map<int, vector<Particles*>>& grid, int nBox) {
 			}
 		}
 
-		//check cells that are foreward and the left and right lower diagonals instead of the traditional up, right, left, down so that the particles don't swap velocities twice
+		//check cells that are forward, down, and the left and right lower diagonals instead of the traditional up, right, left, down so that the particles don't swap velocities twice
 		int neighbors[4][2] = {
 			{0,1},
 			{ 1,1},
@@ -168,9 +170,9 @@ void particleCollis(unordered_map<int, vector<Particles*>>& grid, int nBox) {
 			if (nRow >= 0 && nRow < nBox && nCol >= 0 && nCol < nBox) {
 				int neighborkey = nRow * nBox + nCol;
 
-
 				auto adjCell = grid.find(neighborkey);
-				//if the cell isn't the end iterator of the hash map see if the neigbor particles collided with any of the original cell neigbors
+
+				//if the cell isn't the end iterator of the hash map see if the neighbor particles collided with any of the original cell neighbors
 				if (adjCell != grid.end()) {
 					const auto& neighborParticles = adjCell->second;
 

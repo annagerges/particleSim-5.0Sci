@@ -37,7 +37,7 @@ int main() {
         cin >> nP;
     }
 
-    cout << "Enter dampening coefficent(0-0.2): ";
+    cout << "Enter damping coefficent(0-0.2): ";
     double damp;
     cin >> damp;
 
@@ -67,6 +67,7 @@ int main() {
     uniform_real_distribution<double>randPos(h + 1, 799);
     uniform_real_distribution<double>randVelo(1, 30);
 
+    //reserve space for particles in the hashmap
     unordered_map <int, vector<Particles*>> hash;
     hash.reserve(nBox * nBox);
 
@@ -100,7 +101,7 @@ int main() {
         particles[index].setRow(row);
         particles[index].setCol(col);
 
-        //cell (any paritcle w same row and col will have the same cell key)
+        //cell (any particle w same row and col will have the same cell key)
         cellKey = (row * nBox) + col;
 
         hash[cellKey].push_back(&particles[index]);

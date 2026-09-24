@@ -118,7 +118,7 @@ public:
 		return h;
 	}
 
-	//setter and getter for dampening coeffecient
+	//setter and getter for damping coefficient
 	void setDamp(double d)
 	{
 		dampen = d;
