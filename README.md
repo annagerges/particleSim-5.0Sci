@@ -102,7 +102,7 @@ Uses fstream C++ library to create a csv file and log the qualities of every par
 - **Method**: Reads CSV, computes kinetic, gravitational potential, and potential spring energy. Plots energy drift % over time. Also let's user choose how many particle trajectories they want to view.
 - **Result**: RK4 method has <0.1% energy drift and demonstrates numerical stability
 - **Energy Conservation**: ![Energy Conservation Demo](EnergyConservation.png)
-- **Particle Trajectories**: ![Particle Trajectory Demo](Trajectory.png)
+- **Particle Trajectories**: ![Particle Trajectory Demo](positions.png)
 
 ## Neighbor Checking
 A flaw of the previous versions was that they didn't check if particles in different cells collided with other particles in different cells. The 5.0 versions do.
